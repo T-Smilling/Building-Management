@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserDTO extends AbstractDTO {
+public class UserDTO extends BaseDTO {
     private String userName;
     private String fullName;
     private String password;

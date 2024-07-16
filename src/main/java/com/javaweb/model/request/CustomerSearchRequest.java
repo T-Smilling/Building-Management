@@ -1,8 +1,8 @@
 package com.javaweb.model.request;
 
-import com.javaweb.model.dto.AbstractDTO;
+import com.javaweb.model.dto.BaseDTO;
 
-public class CustomerSearchRequest extends AbstractDTO
+public class CustomerSearchRequest extends BaseDTO
 {
     private Long id;
     private String fullName;

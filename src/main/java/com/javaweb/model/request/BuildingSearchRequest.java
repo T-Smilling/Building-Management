@@ -1,10 +1,10 @@
 package com.javaweb.model.request;
 
-import com.javaweb.model.dto.AbstractDTO;
+import com.javaweb.model.dto.BaseDTO;
 
 import java.util.List;
 
-public class BuildingSearchRequest extends AbstractDTO {
+public class BuildingSearchRequest extends BaseDTO {
     private String name;
     private Long floorArea;
     private String district;

@@ -1,7 +1,7 @@
 package com.javaweb.controller.web;
 
 import com.javaweb.model.request.BuildingSearchRequest;
-import com.javaweb.service.CustomerService;
+import com.javaweb.service.ICustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
 	@Autowired
-	CustomerService customerService;
+	ICustomerService customerService;
 
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(BuildingSearchRequest buildingSearchRequest, HttpServletRequest request) {

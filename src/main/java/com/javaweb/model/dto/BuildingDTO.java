@@ -1,10 +1,8 @@
 package com.javaweb.model.dto;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class BuildingDTO extends AbstractDTO{
+public class BuildingDTO extends BaseDTO {
     private Long id;
     private String name;
     private Long floorArea;

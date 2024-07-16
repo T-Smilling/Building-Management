@@ -1,6 +1,6 @@
 package com.javaweb.model.dto;
 
-public class PasswordDTO extends AbstractDTO<PasswordDTO> {
+public class PasswordDTO extends BaseDTO<PasswordDTO> {
 
     private static final long serialVersionUID = 8835146939192307340L;
 

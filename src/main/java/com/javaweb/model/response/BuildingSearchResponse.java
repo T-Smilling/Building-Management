@@ -1,9 +1,9 @@
 package com.javaweb.model.response;
 
 
-import com.javaweb.model.dto.AbstractDTO;
+import com.javaweb.model.dto.BaseDTO;
 
-public class BuildingSearchResponse extends AbstractDTO {
+public class BuildingSearchResponse extends BaseDTO {
 	private Long id;
 	private String createdDate;
 	private String name;

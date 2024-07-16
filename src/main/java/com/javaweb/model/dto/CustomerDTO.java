@@ -1,6 +1,6 @@
 package com.javaweb.model.dto;
 
-public class CustomerDTO extends AbstractDTO
+public class CustomerDTO extends BaseDTO
 {
     private Long id;
     private String fullName;

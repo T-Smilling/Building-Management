@@ -1,6 +1,6 @@
 package com.javaweb.utils;
 
-import com.javaweb.model.dto.AbstractDTO;
+import com.javaweb.model.dto.BaseDTO;
 import org.apache.commons.lang.StringUtils;
 import org.displaytag.tags.TableTagParameters;
 import org.displaytag.util.ParamEncoder;
@@ -11,7 +11,7 @@ public class DisplayTagUtils {
 
     //private static final Logger log = Logger.getLogger(DisplayTagUtils.class);
 
-    public static void of(HttpServletRequest request, AbstractDTO dto) {
+    public static void of(HttpServletRequest request, BaseDTO dto) {
         if (dto != null) {
             String sPage = request.getParameter(new ParamEncoder(dto.getTableId()).encodeParameterName(TableTagParameters.PARAMETER_PAGE));
             Integer page = 1;

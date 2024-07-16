@@ -8,8 +8,8 @@ import com.javaweb.model.dto.UserDTO;
 import com.javaweb.entity.RoleEntity;
 import com.javaweb.entity.UserEntity;
 import com.javaweb.exception.MyException;
-import com.javaweb.repository.RoleRepository;
-import com.javaweb.repository.UserRepository;
+import com.javaweb.repository.IRoleRepository;
+import com.javaweb.repository.IUserRepository;
 import com.javaweb.service.IUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,10 @@ import java.util.stream.Stream;
 public class UserService implements IUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private IRoleRepository roleRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

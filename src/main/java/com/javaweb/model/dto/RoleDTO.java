@@ -1,6 +1,6 @@
 package com.javaweb.model.dto;
 
-public class RoleDTO extends AbstractDTO<RoleDTO> {
+public class RoleDTO extends BaseDTO<RoleDTO> {
 
 	private static final long serialVersionUID = 5830885581031027382L;
 

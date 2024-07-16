@@ -58,7 +58,7 @@ public class CustomerEntity extends BaseEntity
     }
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    private List<TransactionTypeEntity> transactionTypes = new ArrayList<>();
+    private List<TransactionEntity> transactionTypes = new ArrayList<>();
 
     public String getStatus() {
         return status;
@@ -116,11 +116,11 @@ public class CustomerEntity extends BaseEntity
         this.userEntities = userEntities;
     }
 
-    public List<TransactionTypeEntity> getTransactionTypes() {
+    public List<TransactionEntity> getTransactionTypes() {
         return transactionTypes;
     }
 
-    public void setTransactionTypes(List<TransactionTypeEntity> transactionTypes) {
+    public void setTransactionTypes(List<TransactionEntity> transactionTypes) {
         this.transactionTypes = transactionTypes;
     }
 }

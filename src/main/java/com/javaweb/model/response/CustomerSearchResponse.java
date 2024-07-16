@@ -1,8 +1,8 @@
 package com.javaweb.model.response;
 
-import com.javaweb.model.dto.AbstractDTO;
+import com.javaweb.model.dto.BaseDTO;
 
-public class CustomerSearchResponse extends AbstractDTO
+public class CustomerSearchResponse extends BaseDTO
 {
     private Long id;
     private String fullName;

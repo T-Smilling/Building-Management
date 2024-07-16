@@ -3,7 +3,7 @@ package com.javaweb.service.impl;
 import com.javaweb.converter.RoleConverter;
 import com.javaweb.model.dto.RoleDTO;
 import com.javaweb.entity.RoleEntity;
-import com.javaweb.repository.RoleRepository;
+import com.javaweb.repository.IRoleRepository;
 import com.javaweb.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class RoleService implements IRoleService {
 	
 	@Autowired
-	private RoleRepository roleRepository;
+	private IRoleRepository roleRepository;
 	
 	@Autowired
 	private RoleConverter roleConverter;
