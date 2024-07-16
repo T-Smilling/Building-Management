@@ -4,4 +4,6 @@ import com.javaweb.service.IBuildingService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BuildingServiceImpl implements IBuildingService {}
+public class BuildingServiceImpl implements IBuildingService
+{
+}
