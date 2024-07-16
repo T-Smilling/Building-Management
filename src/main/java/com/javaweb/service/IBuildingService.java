@@ -1,5 +1,5 @@
 package com.javaweb.service;
 
-public interface IBuildingService {
-
+public interface IBuildingService
+{
 }

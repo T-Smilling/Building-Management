@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
 	@Autowired
-	ICustomerService customerService;
+	public ICustomerService customerService;
 
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(BuildingSearchRequest buildingSearchRequest, HttpServletRequest request) {
