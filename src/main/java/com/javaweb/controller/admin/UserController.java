@@ -4,7 +4,7 @@ import com.javaweb.constant.SystemConstant;
 import com.javaweb.model.dto.UserDTO;
 import com.javaweb.security.utils.SecurityUtils;
 import com.javaweb.service.IUserService;
-import com.javaweb.service.impl.RoleService;
+import com.javaweb.service.impl.RoleServiceImpl;
 import com.javaweb.utils.DisplayTagUtils;
 import com.javaweb.utils.MessageUtils;
 import org.apache.commons.lang.StringUtils;
@@ -25,7 +25,7 @@ public class UserController {
 	private IUserService userService;
 
 	@Autowired
-	private RoleService roleService;
+	private RoleServiceImpl roleService;
 
 	@Autowired
 	private MessageUtils messageUtil;

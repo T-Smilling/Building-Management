@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface CustomerRepositoryCustom
-{
-
+public interface CustomerRepositoryCustom {
+    List<CustomerEntity> findAll (CustomerSearchRequest customerSearchRequest, Pageable pageable);
+    int countTotalItem(CustomerSearchResponse customerSearchResponse);
 }

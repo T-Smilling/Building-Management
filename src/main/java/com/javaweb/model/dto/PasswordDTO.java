@@ -1,5 +1,10 @@
 package com.javaweb.model.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class PasswordDTO extends BaseDTO<PasswordDTO> {
 
     private static final long serialVersionUID = 8835146939192307340L;
@@ -7,28 +12,4 @@ public class PasswordDTO extends BaseDTO<PasswordDTO> {
     private String oldPassword;
     private String newPassword;
     private String confirmPassword;
-
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 }

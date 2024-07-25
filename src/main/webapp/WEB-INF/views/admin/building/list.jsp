@@ -179,7 +179,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="form-group">
                                             <div class="col-xs-12">
                                                 <div class="col-sm-6">
@@ -237,7 +237,7 @@
                         </thead>
 
                         <tbody>
-                            <form:form modelAttribute="buildingList">
+                        <form:form modelAttribute="buildingList">
                             <display:table name="buildingList.listResult" cellspacing="0" cellpadding="0"
                                            requestURI="${buildingListURL}" partialList="true" sort="external"
                                            size="${buildingList.totalItems}" defaultsort="2" defaultorder="ascending"
