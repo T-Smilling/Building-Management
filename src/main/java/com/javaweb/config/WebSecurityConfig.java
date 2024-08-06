@@ -15,38 +15,34 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService(){
         return new CustomUserDetailService();
     }
-
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider authProvider= new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
-
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
+    protected void configure(AuthenticationManagerBuilder auth){
         auth.authenticationProvider(authenticationProvider());
     }
-
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-                http.csrf().disable()
+    protected void configure(HttpSecurity http) throws Exception{
+        http.csrf().disable()
                 .authorizeRequests()
-                        .antMatchers("/api/building/{ids}","/admin/building-edit/**", "/admin/user-edit/**", "/admin/user-list","/admin/customer-edit/**").hasAnyRole("MANAGER")
-                        .antMatchers("/admin/**").hasAnyRole("MANAGER","STAFF","ADMIN")
-                        .antMatchers("/login", "/resource/**", "/trang-chu", "/api/**").permitAll()
+                .antMatchers("/api/building/{ids}","/admin/building-edit/**", "/admin/user-edit/**", "/admin/user-list","/admin/customer-edit/**").hasAnyRole("MANAGER")
+                .antMatchers("/admin/**").hasAnyRole("MANAGER","STAFF","ADMIN")
+                .antMatchers("/login", "/resource/**", "/trang-chu", "/api/**").permitAll()
                 .and()
                 .formLogin().loginPage("/login").usernameParameter("j_username").passwordParameter("j_password").permitAll()
                 .loginProcessingUrl("/j_spring_security_check")
@@ -57,8 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().maximumSessions(1).expiredUrl("/login?sessionTimeout");
     }
 
-    @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+    private AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new CustomSuccessHandler();
     }
 }
+

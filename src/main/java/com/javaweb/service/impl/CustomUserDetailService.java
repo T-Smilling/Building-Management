@@ -18,22 +18,21 @@ import java.util.List;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
-
     @Autowired
     private IUserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        UserDTO userDTO = userService.findOneByUserNameAndStatus(name, 1);
-        if(userDTO == null){
-            throw new UsernameNotFoundException("Username not found");
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException{
+        UserDTO userDTO= userService.findOneByUserNameAndStatus(name,1);
+        if(userDTO==null){
+            throw new UsernameNotFoundException("Username not found!");
         }
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        for(RoleDTO role: userDTO.getRoles()){
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getCode()));
+        List<GrantedAuthority> authorities= new ArrayList<>();
+        for (RoleDTO roleDTO : userDTO.getRoles()){
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+roleDTO.getCode()));
         }
-        MyUserDetail myUserDetail = new MyUserDetail(name,userDTO.getPassword(),true,true,true,true,authorities);
-        BeanUtils.copyProperties(userDTO, myUserDetail);
+        MyUserDetail myUserDetail= new MyUserDetail(name,userDTO.getPassword(),true,true,true,true,authorities);
+        BeanUtils.copyProperties(userDTO,myUserDetail);
         return myUserDetail;
     }
 }
