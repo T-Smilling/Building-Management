@@ -1,7 +1,7 @@
 <%--<%@ page language="java" contentType="text/html; charset=UTF-8"--%>
 <%--         pageEncoding="UTF-8"%>--%>
 <%--<%@include file="/common/taglib.jsp"%>--%>
-<%--&lt;%&ndash;<c:url var="webcontacturl" value="  /lien-he"/>&ndash;%&gt;--%>
+<%--&lt;%&ndash;<c:url var="webcontacturl" value="/contact"/>&ndash;%&gt;--%>
 <%--<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">--%>
 <%--<html>--%>
 <%--<head>--%>
@@ -373,7 +373,7 @@
                         <ul class="margin-bottom-15 link" style="list-style-type: none;">
                             <li>
                                 <span class="block_fonticon"><i class="fa fa-map-marker icon-lienhe"></i></span>
-                                <span class="title-li"> 46 Man Thiện, TP. Thủ Đức, TP. HCM</span>
+                                <span class="title-li"> Hà Đông, Hà Nội</span>
                             </li>
                             <li>
                                 <span class="block_fonticon"><i class="fa fa-mobile icon-lienhe"></i></span>
@@ -393,17 +393,17 @@
                 <div class="col-12 col-md-6">
 
                     <h2 class="title-lienhe"><strong>Liên hệ với chúng tôi</strong></h2>
-                    <form:form id="listForm" action="${webcontacturl}" method="POST">
+                    <form:form id="listForm">
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" name = "fullName" placeholder="Họ và tên">
+                                <input type="text" class="form-control" name = "fullName" placeholder="Họ và tên" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" name = "email" placeholder="Email">
+                                <input type="text" class="form-control" name = "email" placeholder="Email" required>
                             </div>
                         </div>
-                        <input type="text" class="form-control mt-3" name = "customerPhone" placeholder="Số điện thoại">
-                        <input type="text" class="form-control mt-3" name = "note" placeholder="Nội dung">
+                        <input type="text" class="form-control mt-3" name = "customerPhone" placeholder="Số điện thoại" required>
+                        <input type="text" class="form-control mt-3" name = "demand" placeholder="Nội dung">
                         <button type="button" class="btn btn-primary px-4 mt-3" id ="addCustomer">
                             Gửi liên hệ
                         </button>
@@ -430,7 +430,7 @@
                                 </div>
                                 <div class="content-center-footer">
                                     <p class="mb-1 mt-3">Trụ sở chính</p>
-                                    <p class="desc-footer">Số 46 Man Thiện, TP Thủ Đức, TP HCM</p>
+                                    <p class="desc-footer">Hà Đông, Hà </p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 text-center">
@@ -517,32 +517,30 @@
 <script>
     $('#addCustomer').click(function (e) {
         e.preventDefault();
-        var fullname = $('input[name="fullName"]').val();
-        var email = $('input[name="email"]').val();
-        var phone = $('input[name="customerPhone"]').val();
-        var demand = $('input[name="note"]').val();
-        var formData = {
-            fullName: fullname,
-            email: email,
-            customerPhone: phone,
-            note: demand
-        };
-
-        addInfo(formData);
+        var data = {};
+        data['fullName'] = $('input[name="fullName"]').val();
+        data['email'] = $('input[name="email"]').val();
+        data['phone'] = $('input[name="customerPhone"]').val();
+        data['demand'] = $('input[name="demand"]').val();
+        data['status'] = "CHUA_XU_LY";
+        addInfo(data);
     });
 
     function addInfo(formData)
     {
         $.ajax({
-            url: "${webcontacturl}",
-            type: 'POST',
+            url: "/api/customer/contact/",
+            type: "POST",
             data: JSON.stringify(formData),
             contentType: "application/json",
+            dataType: "JSON",
             success: function(response) {
-                location.reload();
                 alert("Gửi thông tin liên hệ thành công")
+                location.reload();
             },
             error: function(xhr, status, error) {
+                console.log(error);
+                alert("Gửi thông tin liên hệ thất bại")
                 location.reload();
             }
         });

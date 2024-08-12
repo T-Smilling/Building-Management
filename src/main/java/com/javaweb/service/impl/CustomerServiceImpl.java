@@ -5,6 +5,7 @@ import com.javaweb.entity.CustomerEntity;
 import com.javaweb.entity.UserEntity;
 import com.javaweb.model.dto.AssignmentCustomerDTO;
 import com.javaweb.model.dto.CustomerDTO;
+import com.javaweb.model.request.CustomerCreateRequest;
 import com.javaweb.model.request.CustomerSearchRequest;
 import com.javaweb.model.response.CustomerSearchResponse;
 import com.javaweb.model.response.ResponseDTO;
@@ -12,6 +13,7 @@ import com.javaweb.model.response.StaffResponseDTO;
 import com.javaweb.repository.CustomerRepository;
 import com.javaweb.repository.UserRepository;
 import com.javaweb.service.ICustomerService;
+import com.javaweb.utils.CustomerUtils;
 import com.javaweb.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +30,9 @@ public class CustomerServiceImpl implements ICustomerService {
     private CustomerConverter customerConverter;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CustomerUtils customerUtils;
+
     @Override
     public List<CustomerSearchResponse> findAll(CustomerSearchRequest customerSearchRequest, Pageable pageable) {
         List<CustomerEntity> customerEntities = customerRepository.findAll(customerSearchRequest, pageable);
@@ -55,12 +60,40 @@ public class CustomerServiceImpl implements ICustomerService {
         if(!StringUtils.check(customerDTO.getFullName())) return false;
         return true;
     }
+
     @Override
     public CustomerDTO addOrUpdateCustomer(CustomerDTO customerDTO) {
         if(!validateCreateOrUpdateCustomer(customerDTO)) return null;
         CustomerEntity customerEntity = customerConverter.convertToEntity(customerDTO);
         customerRepository.save(customerEntity);
         return customerDTO;
+    }
+
+    @Override
+    public ResponseDTO addCustomer(CustomerCreateRequest customerCreateRequest) {
+        ResponseDTO responseDTO= new ResponseDTO();
+        if (customerCreateRequest.getPhone() == null || customerCreateRequest.getFullName() == null) {
+            responseDTO.setMessage("Không để tên hoặc số điện thoại trống!");
+            return responseDTO;
+        }
+        CustomerEntity customerEntity= customerConverter.EntitytoCustomerCreateRequest(customerCreateRequest);
+        if(customerCreateRequest.getId() != null){
+            CustomerEntity customerTmp= customerRepository.findById(customerCreateRequest.getId()).get();
+            customerUtils.setCustomer(customerEntity,customerTmp);
+        }
+        customerEntity.setIsActive("1");
+        try{
+            customerRepository.save(customerEntity);
+            if(customerCreateRequest.getId() != null){
+                responseDTO.setMessage("Cập nhật khách hàng thành công!");
+            }
+            else responseDTO.setMessage("Thêm khách hàng thành công!");
+        }
+        catch (Exception e){
+            System.out.println(e);
+            responseDTO.setMessage("Thêm khách hàng thất bại!");
+        }
+        return responseDTO;
     }
 
     @Override

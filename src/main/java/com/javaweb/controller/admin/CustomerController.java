@@ -4,8 +4,10 @@ import com.javaweb.enums.Status;
 import com.javaweb.enums.TransactionType;
 import com.javaweb.model.dto.CustomerDTO;
 import com.javaweb.model.dto.TransactionTypeDTO;
+import com.javaweb.model.request.CustomerCreateRequest;
 import com.javaweb.model.request.CustomerSearchRequest;
 import com.javaweb.model.response.CustomerSearchResponse;
+import com.javaweb.model.response.ResponseDTO;
 import com.javaweb.security.utils.SecurityUtils;
 import com.javaweb.service.ICustomerService;
 import com.javaweb.service.ITransactionTypeService;
@@ -72,12 +74,5 @@ public class CustomerController{
         mav.addObject("transactionListDDX", listDDX);
         mav.addObject("status", Status.type());
         return mav;
-    }
-    @RequestMapping(value = "/contact", method = RequestMethod.POST)
-    public ResponseEntity<?> contact(@RequestBody CustomerDTO customer) {
-        if(customer.getCustomerPhone() != null && customer.getFullName() != null){
-            customerService.addOrUpdateCustomer(customer);
-        }
-        return ResponseEntity.ok("");
     }
 }

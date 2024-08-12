@@ -3,6 +3,7 @@ package com.javaweb.api.admin;
 import com.javaweb.model.dto.AssignmentCustomerDTO;
 import com.javaweb.model.dto.CustomerDTO;
 import com.javaweb.model.dto.TransactionTypeDTO;
+import com.javaweb.model.request.CustomerCreateRequest;
 import com.javaweb.model.request.CustomerSearchRequest;
 import com.javaweb.model.response.CustomerSearchResponse;
 import com.javaweb.model.response.ResponseDTO;
@@ -30,6 +31,10 @@ public class CustomerAPI{
         return ResponseEntity.ok(customerService.addOrUpdateCustomer(customerDTO));
     }
 
+    @PostMapping(value = "/contact")
+    public ResponseDTO contact(@RequestBody CustomerCreateRequest customerCreateRequest) {
+        return customerService.addCustomer(customerCreateRequest);
+    }
     @GetMapping
     public List<CustomerSearchResponse> findAll(@ModelAttribute CustomerSearchRequest customerSearchRequest, Pageable pageable) {
         return customerService.findAll(customerSearchRequest, pageable);

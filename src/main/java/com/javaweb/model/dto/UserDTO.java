@@ -14,6 +14,7 @@ public class UserDTO extends BaseDTO {
     private String userName;
     private String fullName;
     private String password;
+    private String email;
     private Integer status;
     private List<RoleDTO> roles = new ArrayList<>();
     private String roleName;

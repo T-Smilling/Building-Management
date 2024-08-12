@@ -36,7 +36,7 @@ public class CustomerEntity extends BaseEntity
     private String companyName;
 
     @Column(name = "demand")
-    private String note;
+    private String demand;
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<TransactionTypeEntity> transactionTypes = new ArrayList<>();

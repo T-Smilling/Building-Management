@@ -10,6 +10,6 @@ public class CustomerCreateRequest extends BaseDTO {
     private String fullName;
     private String phone;
     private String email;
-    private String note;
+    private String demand;
     private String status;
 }

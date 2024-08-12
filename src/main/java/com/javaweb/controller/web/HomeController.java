@@ -3,6 +3,7 @@ package com.javaweb.controller.web;
 import com.javaweb.model.request.BuildingSearchRequest;
 import com.javaweb.service.ICustomerService;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,8 +50,7 @@ public class HomeController {
     }
 
     @GetMapping(value="/lien-he")
-    public ModelAndView contact()
-	{
+    public ModelAndView contact() {
         ModelAndView mav = new ModelAndView("/web/contact");
         return mav;
     }
@@ -58,6 +58,12 @@ public class HomeController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView("login");
+		return mav;
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(){
+		ModelAndView mav= new ModelAndView("register");
 		return mav;
 	}
 

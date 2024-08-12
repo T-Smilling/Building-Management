@@ -69,6 +69,17 @@
                             </div>
                         </div>
                         <div class="space-4"></div>
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">
+                                <%--<spring:message code="label.password"/>--%>
+                                Mật khẩu
+                            </label>
+                            <div class="col-sm-9">
+                                <input name="password" id="password" cssClass="form-control"/>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
                         <!--Btn-->
                         <div class="col-sm-12">
                             <label class="col-sm-3 control-label no-padding-right message-info"></label>
@@ -114,6 +125,7 @@
         } else {
             var userName = dataArray['userName'];
             var roleCode = dataArray['roleCode'];
+            var password = dataArray['password'];
             if (userName != '' && roleCode != '') {
                 $('#loading_image').show();
                 addUser(dataArray);

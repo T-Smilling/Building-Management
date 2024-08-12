@@ -39,9 +39,9 @@ public class CustomerConverter{
         else customerEntity.setStatus("CHUA_XU_LY");
         return customerEntity;
     }
-    public CustomerCreateRequest toCustomerCreateRequest(CustomerEntity customerEntity){
-        CustomerCreateRequest customerCreateRequest = modelMapper.map(customerEntity, CustomerCreateRequest.class);
-        return customerCreateRequest;
+    public CustomerEntity EntitytoCustomerCreateRequest(CustomerCreateRequest customerCreateRequest){
+        CustomerEntity customerEntity = modelMapper.map(customerCreateRequest, CustomerEntity.class);
+        return customerEntity;
     }
     public CustomerSearchResponse toCustomerSearchResponse(CustomerEntity customerEntity) {
         Map<String, String> status = Status.type();

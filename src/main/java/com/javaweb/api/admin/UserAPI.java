@@ -31,7 +31,6 @@ public class UserAPI{
             userService.updatePassword(id, passwordDTO);
             return ResponseEntity.ok(SystemConstant.UPDATE_SUCCESS);
         } catch (MyException e) {
-            //LOGGER.error(e.getMessage());
             return ResponseEntity.ok(e.getMessage());
         }
     }

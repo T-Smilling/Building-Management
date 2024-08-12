@@ -176,7 +176,9 @@
 
     function warningBeforeDelete() {
         showAlertBeforeDelete(function (e) {
-            e.preventDefault();
+            if (e && typeof e.preventDefault === 'function') {
+               e.preventDefault();
+            }
             var dataArray = $('tbody input[type=checkbox]:checked').map(function () {
                 return $(this).val();
             }).get();

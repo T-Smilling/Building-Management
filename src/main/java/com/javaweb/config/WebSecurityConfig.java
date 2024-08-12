@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .loginProcessingUrl("/j_spring_security_check")
                 .successHandler(myAuthenticationSuccessHandler())
                 .failureUrl("/login?incorrectAccount").and()
-                .logout().logoutUrl("/logout").deleteCookies("JSESSIONID")
+                .logout().logoutUrl("/logout").deleteCookies("JSESSIONID").logoutSuccessUrl("/trang-chu").invalidateHttpSession(true)
                 .and().exceptionHandling().accessDeniedPage("/access-denied").and()
                 .sessionManagement().maximumSessions(1).expiredUrl("/login?sessionTimeout");
     }

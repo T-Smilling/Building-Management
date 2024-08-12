@@ -3,6 +3,7 @@ package com.javaweb.service;
 import com.javaweb.model.dto.AssignmentCustomerDTO;
 import com.javaweb.model.dto.CustomerDTO;
 import com.javaweb.model.dto.TransactionTypeDTO;
+import com.javaweb.model.request.CustomerCreateRequest;
 import com.javaweb.model.request.CustomerSearchRequest;
 import com.javaweb.model.response.CustomerSearchResponse;
 import com.javaweb.model.response.ResponseDTO;
@@ -15,6 +16,7 @@ public interface ICustomerService {
     int countTotalItem( List<CustomerSearchResponse> responses );
     CustomerDTO findById(Long id);
     CustomerDTO addOrUpdateCustomer(CustomerDTO customerDTO);
+    ResponseDTO addCustomer(CustomerCreateRequest customerCreateRequest);
     void deleteCustomersByIds(Long[] ids);
     AssignmentCustomerDTO addAssignmentCustomerEntity(AssignmentCustomerDTO assignmentCustomerDTO);
     ResponseDTO listStaffs(Long id);
